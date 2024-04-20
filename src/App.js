@@ -1,13 +1,22 @@
 import { useState } from "react";
+import Counter from "./components/Counter";
 
 function App() {
-  const [count, setCount] = useState(0);
+  let [count, setCount] = useState(0);
+  const addCount=()=>{
+    setCount(count+1)
+  }
+
+  let obj = {
+   title : '1st',
+   count 
+  }
+
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>Incremet</button>
-      <button onClick={() => setCount(count - 1)} disabled={count === 0}>Decrement</button>
-      <button onClick={() => setCount(0)} disabled={count === 0}>Reset</button>
-      <h1>Counter: {count}</h1>
+      <button onClick={addCount}>Add</button>
+      <Counter {...obj}/>
+      <Counter title = '2nd' count={count}/>
     </div>
   );
 }
