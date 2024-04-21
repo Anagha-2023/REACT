@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Counter from "./components/Counter";
+import Employee from "./components/Employee";
 
 function App() {
   let [count, setCount] = useState(0);
@@ -7,16 +7,19 @@ function App() {
     setCount(count+1)
   }
 
-  let obj = {
-   title : '1st',
-   count 
-  }
+  let emp = [{name:'Steve  Jobs',age:36},
+             {name: 'Musk',age:45}]
 
   return (
     <div>
       <button onClick={addCount}>Add</button>
-      <Counter {...obj}/>
-      <Counter title = '2nd' count={count}/>
+      {
+        emp.map((obj,index)=>
+          (
+            <Employee key = {index} {...obj}/>
+          )
+        )
+      }
     </div>
   );
 }
