@@ -11,7 +11,7 @@ function App() {
       </div>
       <div className="subHeading">
         <br />
-        <h2>Whoop, it's a Good Day  🌝 ☕ </h2>
+        <h2>Whoop , it's a Good Day  🌝 ☕ </h2>
       </div>
       <div className="input">
         <input value={toDo} onChange={(e)=>setToDO(e.target.value)} type="text" placeholder="🖊️ Add item..." />
