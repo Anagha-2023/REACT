@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-function Child() {
-  useEffect(()=>{
-    console.log("Mounting...");
-    return()=>{
-      console.log("Unmounting...");
-    }
-  },[])
+function child() {
   return (
     <div>
-      <h1>This is Data</h1>
+      
     </div>
   )
 }
 
-export default Child
+export default child

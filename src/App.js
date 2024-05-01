@@ -1,15 +1,18 @@
 import React from 'react'
-import { useState } from 'react'
-import Child from './Components/Child';
 
 function App() {
-  const [state,setState] = useState(false);
-
+  const data = ["jack","Rose"]
   return (
-    <div>
-      <button onClick={()=>setState(!state)}>Show/Hide</button>
-      {state?<Child/>:null}
-    </div>
+      <>
+      <h1>Names</h1>
+      <ul>
+        {data.map((items,index)=>{
+          return(
+            <li key={index}>{items}</li>
+          )
+        })}
+      </ul>
+      </>
   )
 }
 
