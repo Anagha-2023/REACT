@@ -1,12 +1,14 @@
-import { React,useState } from 'react'
-import Child from './Components/Child'
+import React from 'react'
+import { useState } from 'react'
+import Child from './Components/Child';
 
 function App() {
-  const [recievedData,setRecievedData] = useState('')
+  const [state,setState] = useState(false);
+
   return (
     <div>
-      <p>Data is:{recievedData}</p>
-      <Child props ={(data)=>{setRecievedData(data)}}/>
+      <button onClick={()=>setState(!state)}>Show/Hide</button>
+      {state?<Child/>:null}
     </div>
   )
 }
