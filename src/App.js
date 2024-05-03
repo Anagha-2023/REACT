@@ -1,19 +1,22 @@
-import React from 'react'
 
-function App() {
-  const data = ["jack","Rose"]
+import React, { useState } from 'react';
+
+function Greetings() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-      <>
-      <h1>Names</h1>
-      <ul>
-        {data.map((items,index)=>{
-          return(
-            <li key={index}>{items}</li>
-          )
-        })}
-      </ul>
-      </>
-  )
+    <div>
+      {isLoggedIn ? (
+        <h1>Welcome back, User!</h1>
+      ) : (
+        <h1>Please log in</h1>
+      )}
+
+      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
+        {isLoggedIn ? 'Log out' : 'Log in'}
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default Greetings;
