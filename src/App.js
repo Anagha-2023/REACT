@@ -1,22 +1,28 @@
+import React, { useState, useEffect } from 'react';
 
-import React, { useState } from 'react';
+function LoadingExample() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState(null);
 
-function Greetings() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+      setData({ message: "Hello, world!" });
+    }, 2000);
+  }, []);
 
   return (
     <div>
-      {isLoggedIn ? (
-        <h1>Welcome back, User!</h1>
+      {isLoading ? (
+        <p>Loading...</p>
       ) : (
-        <h1>Please log in</h1>
+        <div>
+          <h1>Data Loaded Successfully</h1>
+          <p>{data.message}</p>
+        </div>
       )}
-
-      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
-        {isLoggedIn ? 'Log out' : 'Log in'}
-      </button>
     </div>
   );
 }
 
-export default Greetings;
+export default LoadingExample;
