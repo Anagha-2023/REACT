@@ -1,28 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'
 
-function LoadingExample() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-      setData({ message: "Hello, world!" });
-    }, 2000);
-  }, []);
-
+function App() {
+  const [value,setValue] = useState('');
+  const [result,setResult] = useState('')
+  const handleChange = () => {
+    setResult(value);
+  }
   return (
     <div>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <h1>Data Loaded Successfully</h1>
-          <p>{data.message}</p>
-        </div>
-      )}
+      <input type='text' value={value} onChange={(event)=>setValue(event.target.value)} placeholder='Type here...'></input>
+      <button onClick={handleChange}>Submit</button>
+      {result && <h1>{result}</h1>}
     </div>
-  );
+  )
 }
 
-export default LoadingExample;
+export default App
