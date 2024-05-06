@@ -1,17 +1,17 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react';
 
 function App() {
-  const inputRef = useRef(null);
+  const [count, setCount] = useState(0);
 
-  const handleSubmit = (event) => {
-    console.log("input value:",inputRef.current.value);
-  }
+  const emp = ["Jack", "Rose"];
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' ref={inputRef}></input>
-      <button type='submit'>Submit</button>
-    </form>
-  )
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      {count > 0 && <p>{emp[count-1]}</p>}
+    </div>
+  );
 }
 
-export default App
+export default App;
