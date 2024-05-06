@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 
 function App() {
-  const [value,setValue] = useState('');
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const inputRef = useRef(null);
+
+  const handleSubmit = (event) => {
+    console.log("input value:",inputRef.current.value);
   }
   return (
-    <div>
-      <input type='text' value={value} onChange={handleChange} placeholder='Type here...'></input>
-      {value && <h1>{value}</h1>}
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input type='text' ref={inputRef}></input>
+      <button type='submit'>Submit</button>
+    </form>
   )
 }
 
