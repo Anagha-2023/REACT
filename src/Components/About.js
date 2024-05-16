@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Child() {
+function About() {
   return (
     <div>
-      
+      <h1>About Me</h1>
     </div>
   )
 }
 
-export default Child
+export default About

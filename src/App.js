@@ -1,27 +1,24 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-
+import React from 'react'
+// import { useState } from 'react'
+import About from './Components/About';
+import Contact from './Components/Contact'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [state,setState] = useState([])
+  // const [state,setState] = useState('');
+
   return (
     <div>
-      <h1>Hello World</h1>
-      <button onClick={()=>{
-        axios.get('https://jsonplaceholder.typicode.com/posts').then((response)=>{
-          console.log(response.data);
-          setState(response.data)
-        })
-      }}>Click Me</button>
-      {state.map((obj,index)=>{
-        return(
-          <div>
-            <h1>{index+1}</h1>
-            <h1>{obj.title}</h1>
-            <h4>{obj.body}</h4>
-          </div>
-        )
-      })}
+      <BrowserRouter>
+
+      <Link to='/about'>About</Link>
+      <Link to='/contact'>Contact</Link>
+      <Routes>
+      <Route Component={About} path='/about'/>
+      <Route Component={Contact} path='/contact'/>
+      </Routes>
+      
+      </BrowserRouter>
     </div>
   )
 }
