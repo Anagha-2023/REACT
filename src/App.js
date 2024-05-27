@@ -1,24 +1,29 @@
-import React, { useState } from 'react'
-import About from './Components/About'
-import Contact from './Components/Contact'
-import { Route, Routes ,useNavigate} from 'react-router-dom';
-import { AppContext } from './AppContext';
+import React, { useReducer } from 'react'
 
-function App() {
-  const navigate = useNavigate()
-  const [state,setState] = useState(100)
+const initialState = {count:0}
+
+function reducer(state,action) {
+  switch(action.type){
+    case 'increment':
+      return {count:state.count+1};
+    case 'decrement':
+      return {count:state.count-1};
+    case 'reset':
+      return {count:0}
+      default:
+        return state;
+  }
+  
+}
+
+function App(){
+  const [state,dispatch] = useReducer(reducer,initialState);
   return (
     <div>
-        <button onClick={()=>navigate('/about')}>About Me</button>
-        <button onClick={()=>navigate('/contact')}>Contact Me</button>
-
-        <AppContext.Provider value={{data:state}}>
-          <Routes>
-           <Route element={<About/>} path = '/about'/>
-           <Route element = {<Contact/>} path='/contact'/>
-          </Routes>
-        </AppContext.Provider>
-         
+      <h1>Count:{state.count}</h1>
+      <button onClick={()=>dispatch({type:'increment'})}>Increment</button>
+      <button onClick={()=>dispatch({type:'decrement'})}>Decrement</button>
+      <button onClick={()=>dispatch({type:'reset'})}>Reset</button>
     </div>
   )
 }
