@@ -1,29 +1,17 @@
-import React, { useReducer } from 'react'
+import React, { useCallback, useState } from 'react'
 
-const initialState = {count:0}
+function App() {
+  const [count,setCount] = useState(0);
 
-function reducer(state,action) {
-  switch(action.type){
-    case 'increment':
-      return {count:state.count+1};
-    case 'decrement':
-      return {count:state.count-1};
-    case 'reset':
-      return {count:0}
-      default:
-        return state;
-  }
-  
-}
+  const handleClick = useCallback(()=>{
+    console.log('Button Clicked');
+  },[])
 
-function App(){
-  const [state,dispatch] = useReducer(reducer,initialState);
   return (
     <div>
-      <h1>Count:{state.count}</h1>
-      <button onClick={()=>dispatch({type:'increment'})}>Increment</button>
-      <button onClick={()=>dispatch({type:'decrement'})}>Decrement</button>
-      <button onClick={()=>dispatch({type:'reset'})}>Reset</button>
+      <h1>Count:{count}</h1>
+      <button onClick={()=>count <10 && setCount(count+1)}>Increment</button>
+      <button onClick={handleClick}>Log Message</button>
     </div>
   )
 }
