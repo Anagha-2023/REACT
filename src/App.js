@@ -1,19 +1,17 @@
-import React, { useCallback, useState } from 'react'
+import React, { useMemo } from 'react';
 
-function App() {
-  const [count,setCount] = useState(0);
-
-  const handleClick = useCallback(()=>{
-    console.log('Button Clicked');
-  },[])
+const SimpleComponent = ({ count }) => {
+  const computedValue = useMemo(() => {
+    console.log('Computing Value');
+    return count * 2;
+  }, [count]);
 
   return (
     <div>
-      <h1>Count:{count}</h1>
-      <button onClick={()=>count <10 && setCount(count+1)}>Increment</button>
-      <button onClick={handleClick}>Log Message</button>
+      <h1>Count: {count}</h1>
+      <h2>Computed Value: {computedValue}</h2>
     </div>
-  )
+  );
 }
 
-export default App
+export default SimpleComponent;
