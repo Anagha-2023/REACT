@@ -1,19 +1,25 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react'
 
-function ExampleComponent() {
-  const myRef = useRef('initial value');
+function App() {
+  const [count,setCount] = useState(0);
+  useEffect(()=>{
+    const intervelId = setInterval(() => {
+      setCount(prevCount=>prevCount+1);
+    },1000);
 
-  const updateValue = () => {
-    myRef.current = 'new value';
-    console.log('Updated value:', myRef.current);
-  };
-
+    setTimeout(()=>{
+      clearInterval(intervelId)
+    },5000)
+    return()=>{
+      clearInterval(intervelId)
+    }
+  },[])
   return (
     <div>
-      <p>Current value: {myRef.current}</p>
-      <button onClick={updateValue}>Update Value</button>
+      {count}
     </div>
-  );
+  )
 }
 
-export default ExampleComponent;
+export default App
+
