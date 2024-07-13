@@ -1,7 +1,7 @@
 import React from 'react'
-import One from '../Components/One'
+import One from './One'
 
-function Contact(props) {
+function Contact() {
   return (
     <div>
       <h1>Contact Me</h1>

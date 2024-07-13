@@ -1,10 +1,10 @@
 import React from 'react'
-import Two from '../Components/Two'
+import Two from './Two';
 
-function One(props) {
+function One() {
   return (
     <div>
-      <h1>Layer One</h1>
+      <h1>One</h1>
       <Two></Two>
     </div>
   )
