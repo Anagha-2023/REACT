@@ -1,30 +1,13 @@
-import React, { useState } from 'react'
+import useCounter from './Components/UseCounter'
 
 function App() {
-  const [searchTerm,setSearchTerm] = useState('');
-  const countries = ["India","Nepal","Butan","China","Palistan","Afganistan"];
-  const handleSearch=(event)=>{
-    setSearchTerm(event.target.value)
-  }
-
-  const Term = countries.filter((country)=>{
-    return(
-      country.toLowerCase().includes(searchTerm.toLowerCase())
-    )  
-  })
+  const {count,increment,decrement,reset} = useCounter(0);
   return (
     <div>
-      <input type='text' value={searchTerm} onChange={handleSearch}  placeholder='search here...'></input>
-      <ul>
-        {Term.map((country,index)=>{
-          return(
-            <div>
-              <li key={index}><h1>{country}</h1></li>
-            </div>
-            
-          )
-        })}
-      </ul>
+      <h1>Count:{count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
     </div>
   )
 }
